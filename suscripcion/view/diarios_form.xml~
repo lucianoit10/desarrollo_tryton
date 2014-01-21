@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<form string="EDICIONES" col="2">
+    <label name="suscripcion"/>
+    <field name="suscripcion"/>    
+    <newline/>
+    <label name="edicion"/>
+    <field name="edicion"/>
+    <newline/>
+    <label name="estado"/>
+    <field name="estado"/>
+</form>

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<form string="SUSCRIPCION">
+    <label name="cliente"/>
+    <field name="cliente"/>
+    <label name="fecha"/>
+    <field name="fecha"/>
+    <newline/>
+    <notebook>
+        <page string="EDICIONES">
+            <field name="ediciones" colspan="4"/>
+        </page>
+        <page string="VENTAS">
+            <field name="ventas" colspan="4"/>
+        </page>
+    </notebook>    
+    <newline/>
+    <group colspan="4" id="buttons">
+        <label name="state" string = "ESTADO"/>
+        <field name="state"/>
+        <button name="pagar" string="Pagar" icon="tryton-go-next"/>
+        <button name="cancelada" string="Cancelada" icon="tryton-cancel"/>
+    </group>
+</form>

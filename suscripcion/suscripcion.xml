@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.action.act_window" id="act_suscrip_form">
+            <field name="name">Suscripcion</field>
+            <field name="res_model">suscripcion.suscripcion</field>
+        </record>
+        <record model="ir.ui.view" id="suscrip_view_form">
+            <field name="model">suscripcion.suscripcion</field>
+            <field name="type">form</field>
+            <field name="name">suscrip_form</field>
+        </record>
+        <record model="ir.ui.view" id="suscrip_view_tree">
+            <field name="model">suscripcion.suscripcion</field>
+            <field name="type">tree</field>
+            <field name="name">suscrip_tree</field>
+        </record>
+        <record model="ir.ui.view" id="diarios_view_form">
+            <field name="model">suscripcion.diarios</field>
+            <field name="type">form</field>
+            <field name="name">diarios_form</field>
+        </record>
+        <record model="ir.ui.view" id="diarios_view_tree">
+            <field name="model">suscripcion.diarios</field>
+            <field name="type">tree</field>
+            <field name="name">diarios_tree</field>
+        </record>
+
+        <record model="ir.action.act_window.domain" id="act_suscrip_form_domain_pendiente">
+            <field name="name">Activa</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('state', '=', 'activa')]</field>
+            <field name="act_window" ref="act_suscrip_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_suscrip_form_domain_publicada">
+            <field name="name">Concretada</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain">[('state', '=', 'concretada')]</field>
+            <field name="act_window" ref="act_suscrip_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_suscrip_form_domain_cancelada">
+            <field name="name">Cancelada</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain">[('state', '=', 'cancelada')]</field>
+            <field name="act_window" ref="act_suscrip_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_suscrip_form_domain_all">
+            <field name="name">Todo</field>
+            <field name="sequence" eval="100"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_suscrip_form"/>
+        </record>
+
+        <record model='ir.ui.view' id='cantidad_apariciones_form'>
+            <field name='model'>suscripcion.cantidad_apariciones</field>
+            <field name='type'>form</field>
+            <field name='name'>cantidad_apariciones_form</field>
+        </record>
+        <record model='ir.ui.view' id='seleccion_fechas_form'>
+            <field name='model'>suscripcion.seleccion_fechas</field>
+            <field name='type'>form</field>
+            <field name='name'>seleccion_fechas_form</field>
+        </record>
+        <record model='ir.ui.view' id='finalizar_form'>
+            <field name='model'>suscripcion.finalizar</field>
+            <field name='type'>form</field>
+            <field name='name'>finalizar_form</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_suscripcion">
+            <field name="name">Asistente Suscripcion</field>
+            <field name="wiz_name">suscripcion.wizard_suscripcion</field>
+            <field name='model'>suscripcion.suscripcion</field>
+        </record>
+
+        <record model='ir.ui.view' id='seleccion_fechas_pagar_form'>
+            <field name='model'>suscripcion.seleccion_fechas_pagar</field>
+            <field name='type'>form</field>
+            <field name='name'>seleccion_fechas_pagar_form</field>
+        </record>
+        <record model='ir.ui.view' id='finalizar_pagar_form'>
+            <field name='model'>suscripcion.finalizar</field>
+            <field name='type'>form</field>
+            <field name='name'>finalizar_pagar_form</field>
+        </record>
+        <record model="ir.action.wizard" id="wizard_pagar">
+            <field name="name">Crear Factura</field>
+            <field name="wiz_name">suscripcion.wizard_pagar</field>
+            <field name='model'>suscripcion.suscripcion</field>
+        </record>
+        <menuitem name="Suscripcion" sequence="0" id="menu_suscrip" />
+        <menuitem parent="menu_suscrip" sequence="1" action="act_suscrip_form" icon="tryton-list" id="menu_suscrip_form"/>
+    </data>
+</tryton>

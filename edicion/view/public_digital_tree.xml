@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<tree string='Publicacion Digital'>
+    <field name='cliente'/>
+    <field name='producto'/>
+    <field name='categoria'/>
+    <field name='fecha'/>
+    <field name='descrip'/>
+</tree>

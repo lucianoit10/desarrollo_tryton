@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<form string="Publicacion Radio">
+    <label name="cliente"/>
+    <field name="cliente"/>
+    <label name="categoria"/>
+    <field name="categoria"/>
+    <newline/>
+    <label name="edicion"/>
+    <field name="edicion"/>
+    <label name="producto"/>
+    <field name="producto" widget="selection"/>
+    <newline/>
+    <label name="descrip"/>
+    <field name="descrip" colspan="4"/>
+</form>

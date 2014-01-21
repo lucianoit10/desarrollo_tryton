@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<form string="Seleccionar fechas de apariciones">
+    <label name="cant_apariciones"/>
+    <field name="cant_apariciones" colspan="3"/>
+    <newline/>
+    <label name="fecha"/>
+    <field name="fecha" colspan="3"/>
+</form>

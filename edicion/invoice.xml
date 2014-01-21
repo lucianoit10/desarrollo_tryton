@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.action.act_window.domain" id="act_invoice_out_invoice_domain_pagada">
+            <field name="name">Pagada</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain">[('state', '=', 'paid')]</field>
+            <field name="act_window" ref="account_invoice.act_invoice_out_invoice_form"/>
+        </record>
+
+        <record model="ir.ui.view" id="edicion_invoice_view_form">
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="name">invoice_form</field>
+            <field name="inherit" ref="account_invoice.invoice_view_form"/>
+        </record>
+    </data>
+</tryton>

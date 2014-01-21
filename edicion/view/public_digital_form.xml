@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<form string="Publicacion Digital" col="6">
+    <label name="cliente"/>
+    <field name="cliente"/>
+    <label name="categoria"/>
+    <field name="categoria"/>
+    <label name="producto"/>
+    <field name="producto" widget="selection"/>
+    <newline/>
+    <label name="edicion"/>
+    <field name="edicion" colspan="6"/>
+    <newline/>
+    <label name="descrip"/>
+    <field name="descrip" colspan="6"/>
+</form>

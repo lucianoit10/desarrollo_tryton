@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<form string="Tipo y Categoria" col="4">
+    <field name="diario" xexpand="0"/>
+    <label name="categoriaDiario"/>
+    <field name="categoriaDiario"/>
+</form>

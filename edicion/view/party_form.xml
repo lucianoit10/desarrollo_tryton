@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<data>
+		<!--con expresiones  xpath  nos metemos en el lugarcito donde queremos agregar el camṕo asique agregamos un formulario con solo-->
+    <xpath 
+        expr="/form/field[@name='code']"
+        position="after">
+        <newline/>
+        <label name="usa_dni"/>
+        <field name="usa_dni"/>
+        <label name="dni"/>
+        <field name="dni"/>
+        <newline/>
+        <label name="facturacion"/>
+        <field name="facturacion"/>
+
+    </xpath>
+</data>

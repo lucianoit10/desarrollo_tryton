@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<tree string='Publicacion Diario'>
+    <field name='fecha'/>
+    <field name = 'estado'/>
+    <field name='suscripcion'/>
+</tree>

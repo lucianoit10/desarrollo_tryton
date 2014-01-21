@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<tree string='SUSCRIPCIONES'>
+    <field name='creacion'/>
+    <field name='cliente'/>
+    <field name='state'/>
+    <field name='fecha'/>
+</tree>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<form string="Publicacion Diario" col="8">
+    <label name="cliente"/>
+    <field name="cliente"/>
+    <label name="ubicacion"/>
+    <field name="ubicacion"/>
+    <newline/>
+    <label name="producto"/>
+    <field name="producto" widget="selection"/>
+    <label name="medidas"/>
+    <field name="medidas"/>
+    <newline/>
+    <label name="edicion"/>
+    <field name="edicion"/>
+    <label name="categoria"/>
+    <field name="categoria"/>
+    <newline/>
+    <label name="origen"/>
+    <field name="origen"/>
+    <label name="en_guia"/>
+    <field name="en_guia"/>
+    <newline/>
+    <label name="descrip"/>
+    <field name="descrip" colspan="8"/>
+    <newline/>
+    <group col="8" colspan="3" id="buttons">
+        <label name="venta_cm"/>
+        <field name="venta_cm"/>
+        <newline/>
+        <label name="fecha"/>
+        <field name="fecha"/>
+        <newline/>
+        <label name="state" string = "ESTADO"/>
+        <field name="state"/>
+        <button name="reprogramar" string="Reprogramar" icon="tryton-clear"/>
+        <button name="pendiente" string="Pendiente" icon="tryton-go-next"/>
+        <button name="publicada" string="Publicar" icon="tryton-ok"/>
+        <button name="cancelada" string="Cancelar" icon="tryton-cancel"/>
+        <button name="presupuestar" string="Diseñar" icon="tryton-ok"/>
+    </group>
+</form>

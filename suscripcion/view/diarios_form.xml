@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<form string="EDICION" col="2">
+    <label name="suscripcion"/>
+    <field name="suscripcion"/>
+    <newline/>
+    <label name="edicion"/>
+    <field name="edicion"/>
+    <newline/>
+    <group colspan="3" id="buttons">
+        <label name="state" string = "ESTADO"/>
+        <field name="state"/>
+        <button name="entregado" string="Entregar" icon="tryton-ok"/>
+    </group>
+</form>

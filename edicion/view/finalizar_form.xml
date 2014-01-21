@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<form string="Finalizar">
+    <label name="texto" string='EL PROCESO DE PRESUPUESTACION A TERMINADO CON EXITO'/>
+</form>

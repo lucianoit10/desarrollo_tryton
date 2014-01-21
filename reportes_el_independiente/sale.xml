@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.action.report" id="sale.report_sale">
+            <field name="name">Sale</field>
+            <field name="report_name">reportes_el_independiente.reporte_sale_presupuestador</field>
+            <field name="model">sale.sale</field>
+            <field name="report">reportes_el_independiente/sale.odt</field>
+            <field name="style">company/header_A4.odt</field>
+            <field name="template_extension">odt</field>
+            <field name="active" eval="True"/>
+        </record>
+    </data>
+</tryton>

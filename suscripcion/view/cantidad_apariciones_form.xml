@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<form string="Funebre Comun" col="6">
+    <label name="apariciones"/>
+    <field name="apariciones" xexpand="0" width="200"/>
+    <label name="cant_apariciones"/>
+    <field name="cant_apariciones"/>
+    <label name="inicio"/>
+    <field name="inicio"/>
+</form>

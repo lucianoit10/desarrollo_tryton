@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<form string="Funebre Destacado" col="6">
+    <label name="cant_centimetros"/>
+    <field name="cant_centimetros" xexpand="0" width="150"/>
+    <newline/>
+    <label name="cant_columnas"/>
+    <field name="cant_columnas" xexpand="0" width="150"/>
+    <newline/>
+    <separator id="s4" colspan="6"/>
+    <label name="apariciones"/>
+    <field name="apariciones" xexpand="0" width="200"/>
+    <label name="cant_apariciones"/>
+    <field name="cant_apariciones"/>
+    <label name="inicio"/>
+    <field name="inicio"/>
+    <newline/>
+    <separator name="descripcion" string="TEXTO DEL AVISO FUNEBRE DESTACADO" colspan='6'/>
+    <newline/>
+    <field name="descripcion" colspan='6'/>
+</form>

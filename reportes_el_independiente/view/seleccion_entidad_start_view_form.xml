@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<form string="Seleccionar Cliente y Periodo">
+    <label name="entidad"/>
+    <field name="entidad"/>
+    <newline/>
+    <label name="desde"/>
+    <field name="desde"/>
+    <newline/>
+    <label name="hasta"/>
+    <field name="hasta"/>
+
+</form>

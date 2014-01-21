@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.action.report" id="report_invoice_presupuestador">
+            <field name="name">Factura Resumida</field>
+            <field name="report_name">reportes_el_independiente.reporte_invoice_presupuestador</field>
+            <field name="model">account.invoice</field>
+            <field name="report">reportes_el_independiente/invoice.odt</field>
+            <field name="style">company/header_A4.odt</field>
+            <field name="template_extension">odt</field>
+            <field name="active" eval="True"/>
+        </record>
+        <record model="ir.action.keyword" id="report_invoice_presupuestador_keyword">
+            <field name="keyword">form_print</field>
+            <field name="model">account.invoice,-1</field>
+            <field name="action" ref="report_invoice_presupuestador"/>
+        </record>
+    </data>
+</tryton>

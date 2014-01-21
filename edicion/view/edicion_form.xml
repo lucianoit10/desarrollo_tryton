@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<form string="Edicion">
+    <label name="fecha"/>
+    <field name="fecha"/>
+    <newline/>
+    <notebook>
+        <page id="id_diario" string="DIARIO">
+            <field name="publicacionesDiario" colspan="4"/>
+        </page>
+        <page id="id_radio" string="RADIO">
+            <field name="publicacionesRadio" colspan="4"/>
+        </page>
+        <page id="id_digital" string="DIGITAL">
+            <field name="publicacionesDigital" colspan="4"/>
+        </page>
+    </notebook>
+</form>

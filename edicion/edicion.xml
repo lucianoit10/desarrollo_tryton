@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="ir.action.act_window" id="act_edicion_form">
+            <field name="name">Ediciones</field>
+            <field name="res_model">edicion.edicion</field>
+        </record>
+        <record model="ir.ui.view" id="edicion_view_form">
+            <field name="model">edicion.edicion</field>
+            <field name="type">form</field>
+            <field name="name">edicion_form</field>
+        </record>
+        <record model="ir.ui.view" id="edicion_view_tree">
+            <field name="model">edicion.edicion</field>
+            <field name="type">tree</field>
+            <field name="name">edicion_tree</field>
+        </record>
+        <record model="ir.ui.view" id="public_diario_view_tree">
+            <field name="model">edicion.publicacion_diario</field>
+            <field name="type">tree</field>
+            <field name="name">public_diario_tree</field>
+        </record>
+        <record model="ir.ui.view" id="public_radio_view_tree">
+            <field name="model">edicion.publicacion_radio</field>
+            <field name="type">tree</field>
+            <field name="name">public_radio_tree</field>
+        </record>
+        <record model="ir.ui.view" id="public_digital_view_tree">
+            <field name="model">edicion.publicacion_digital</field>
+            <field name="type">tree</field>
+            <field name="name">public_digital_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_public_radio_form">
+            <field name="name">Publicaciones Radio</field>
+            <field name="res_model">edicion.publicacion_radio</field>
+        </record>
+        <record model="ir.ui.view" id="public_radio_view_form">
+            <field name="model">edicion.publicacion_radio</field>
+            <field name="type">form</field>
+            <field name="name">public_radio_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_public_digital_form">
+            <field name="name">Publicaciones Digital</field>
+            <field name="res_model">edicion.publicacion_digital</field>
+        </record>
+        <record model="ir.ui.view" id="public_digital_view_form">
+            <field name="model">edicion.publicacion_digital</field>
+            <field name="type">form</field>
+            <field name="name">public_digital_form</field>
+        </record>
+        <record model="ir.action.act_window" id="act_public_diario_form">
+            <field name="name">Publicaciones Diario</field>
+            <field name="res_model">edicion.publicacion_diario</field>
+            <field name="search_value"></field>
+        </record>
+        <record model="ir.ui.view" id="public_diario_view_form">
+            <field name="model">edicion.publicacion_diario</field>
+            <field name="type">form</field>
+            <field name="name">public_diario_form</field>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_publ_diario_form_domain_reprogramar">
+            <field name="name">A Reprogramar</field>
+            <field name="sequence" eval="10"/>
+            <field name="domain">[('state', '=', 'reprogramar')]</field>
+            <field name="act_window" ref="act_public_diario_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_publ_diario_form_domain_pendiente">
+            <field name="name">Pendiente</field>
+            <field name="sequence" eval="20"/>
+            <field name="domain">[('state', '=', 'pendiente')]</field>
+            <field name="act_window" ref="act_public_diario_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_publ_diario_form_domain_publicada">
+            <field name="name">Publicada</field>
+            <field name="sequence" eval="30"/>
+            <field name="domain">[('state', '=', 'publicada')]</field>
+            <field name="act_window" ref="act_public_diario_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_publ_diario_form_domain_cancelada">
+            <field name="name">Cancelada</field>
+            <field name="sequence" eval="40"/>
+            <field name="domain">[('state', '=', 'cancelada')]</field>
+            <field name="act_window" ref="act_public_diario_form"/>
+        </record>
+        <record model="ir.action.act_window.domain" id="act_publ_diario_form_domain_all">
+            <field name="name">Todo</field>
+            <field name="sequence" eval="100"/>
+            <field name="domain"></field>
+            <field name="act_window" ref="act_public_diario_form"/>
+        </record>
+        <record model='ir.ui.view' id='tipo_y_categoria_form'>
+                <field name='model'>edicion.tipo_y_categoria.start</field>
+                <field name='type'>form</field>
+                <field name='name'>tipo_y_categoria_form</field>
+        </record>
+        <record model='ir.ui.view' id='producto_form'>
+                <field name='model'>edicion.producto</field>
+                <field name='type'>form</field>
+                <field name='name'>producto_form</field>
+        </record>
+        <record model='ir.ui.view' id='aviso_comun_form'>
+            <field name='model'>edicion.aviso_comun</field>
+            <field name='type'>form</field>
+            <field name='name'>aviso_comun_form</field>
+        </record>
+        <record model='ir.ui.view' id='aviso_especial_form'>
+            <field name='model'>edicion.aviso_especial</field>
+            <field name='type'>form</field>
+            <field name='name'>aviso_especial_form</field>
+        </record>
+        <record model='ir.ui.view' id='funebre_destacado_form'>
+            <field name='model'>edicion.funebre_destacado</field>
+            <field name='type'>form</field>
+            <field name='name'>funebre_destacado_form</field>
+        </record>
+        <record model='ir.ui.view' id='clasificado_destacado_form'>
+            <field name='model'>edicion.clasificado_destacado</field>
+            <field name='type'>form</field>
+            <field name='name'>clasif_destacado_form</field>
+        </record>
+        <record model='ir.ui.view' id='seleccion_fechas_form'>
+                <field name='model'>edicion.seleccion_fechas</field>
+                <field name='type'>form</field>
+                <field name='name'>seleccion_fechas_form</field>
+        </record>
+        <record model='ir.ui.view' id='finalizar_form'>
+            <field name='model'>edicion.finalizar</field>
+            <field name='type'>form</field>
+            <field name='name'>finalizar_form</field>
+        </record>
+        <record model="ir.action.wizard" id="presupuestacion_centimetros">
+                <field name="name">Asistente Redimension Centimetros</field>
+                <field name="wiz_name">edicion.presupuestacion_centimetros</field>
+                <field name='model'>edicion.publicacion_diario</field>
+        </record>
+        
+        <menuitem name="Edicion" sequence="0" id="menu_edicion" />
+        <menuitem parent="menu_edicion" sequence="1" action="act_edicion_form" icon="tryton-list" id="menu_edicion_form"/>
+        <menuitem parent="menu_edicion" sequence="2" action="act_public_diario_form" icon="tryton-list" id="menu_public_diario_form"/>
+        <menuitem parent="menu_edicion" sequence="3" action="act_public_radio_form" icon="tryton-list" id="menu_public_radio_form"/>
+        <menuitem parent="menu_edicion" sequence="4" action="act_public_digital_form" icon="tryton-list" id="menu_public_digital_form"/>
+    </data>
+</tryton>

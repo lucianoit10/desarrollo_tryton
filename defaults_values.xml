@@ -1,0 +1,2212 @@
+<?xml version="1.0"?>
+<tryton>
+    <data> 
+<!-- IMPORTANTE :agregar el account_product y product como dependencia en el tryton.cfg -->
+	<!-- CATEGORIAS DE CLIENTES -->
+        <record model="party.category" id="cat_cliente">
+            <field name="name">Cliente</field>
+        </record>
+        <record model="party.category" id="cat_particular">
+            <field name="name">Particular</field>
+            <field name="parent" ref="cat_cliente"/>
+        </record>
+        <record model="party.category" id="cat_cta_cte">
+            <field name="name">Cuenta Corriente</field>
+            <field name="parent" ref="cat_cliente"/>
+        </record>
+        <record model="party.category" id="cat_particular_cta_cte">
+            <field name="name">Particular</field>
+            <field name="parent" ref="cat_cta_cte"/>
+        </record>
+        <record model="party.category" id="cat_comisionista">
+            <field name="name">Comisionista</field>
+            <field name="parent" ref="cat_cta_cte"/>
+        </record>
+        <record model="party.category" id="cat_oficial">
+            <field name="name">Oficial</field>
+            <field name="parent" ref="cat_cta_cte"/>
+        </record>
+        <!-- UNIDADES DE MEDIDA -->
+        <record model="product.uom" id="uom_linea">
+            <field name="name">Linea</field>
+            <field name="symbol">lin</field>
+            <field name="category" ref="product.uom_cat_unit"/>
+        </record>
+        <record model="product.uom" id="uom_pagina">
+            <field name="name">Pagina</field>
+            <field name="symbol">pag</field>
+            <field name="category" ref="product.uom_cat_unit"/>
+        </record>
+
+        <!-- CATEGORIAS GENRALES de PRODUCTOS -->
+        <record model="product.category" id="cat_diario">
+            <field name="name">Diario</field>
+        </record>
+        <record model="product.category" id="cat_radio">
+            <field name="name">Radio</field>
+        </record>
+        <record model="product.category" id="cat_digital">
+            <field name="name">Digital</field>
+        </record>
+        <record model="product.category" id="cat_extra">
+            <field name="name">Extra</field>
+        </record>
+
+        <!-- CATEGORIAS de PRODUCTOS de DIARIO -->
+        <record model="product.category" id="cat_aviso_comun">
+            <field name="name">Aviso Comun</field>
+            <field name="parent" ref="cat_diario" />
+            <field name="account_parent" eval="True" />
+            <field name="taxes_parent" eval="True" />
+        </record>
+        <record model="product.category" id="cat_aviso_especial">
+            <field name="name">Aviso Especial</field>
+            <field name="parent" ref="cat_diario" />
+            <field name="account_parent" eval="True" />
+            <field name="taxes_parent" eval="True" />
+        </record>
+        <record model="product.category" id="cat_aviso_funebre">
+            <field name="name">Funebre</field>
+            <field name="parent" ref="cat_diario" />
+            <field name="account_parent" eval="True" />
+            <field name="taxes_parent" eval="True" />
+        </record>
+        <record model="product.category" id="cat_aviso_clasificado">
+            <field name="name">Clasificado</field>
+            <field name="parent" ref="cat_diario" />
+            <field name="account_parent" eval="True" />
+            <field name="taxes_parent" eval="True" />
+        </record>
+        <record model="product.category" id="cat_edicto">
+            <field name="name">Edicto</field>
+            <field name="parent" ref="cat_diario" />
+            <field name="account_parent" eval="True" />
+            <field name="taxes_parent" eval="True" />
+        </record>
+        <record model="product.category" id="cat_suplemento">
+            <field name="name">Suplemento</field>
+            <field name="parent" ref="cat_diario" />
+            <field name="account_parent" eval="True" />
+            <field name="taxes_parent" eval="True" />
+        </record>
+        <record model="product.category" id="cat_insert">
+            <field name="name">Insert</field>
+            <field name="parent" ref="cat_diario"/>
+            <field name="account_parent" eval="True" />
+            <field name="taxes_parent" eval="True" />
+        </record>
+        <record model="product.category" id="cat_cm">
+            <field name="name">Centimetros</field>
+            <field name="parent" ref="cat_diario"/>
+            <field name="account_parent" eval="True" />
+            <field name="taxes_parent" eval="True" />
+        </record>
+
+        <!-- CATEGORIAS de PRODUCTOS de RADIO -->
+        <record model="product.category" id="cat_radio_prov">
+            <field name="name">Costo Provincial</field>
+            <field name="parent" ref="cat_radio" />
+            <field name="account_parent" eval="True" />
+            <field name="taxes_parent" eval="True" />
+        </record>
+        <record model="product.category" id="cat_radio_nac">
+            <field name="name">Costo Nacional</field>
+            <field name="parent" ref="cat_radio" />
+            <field name="account_parent" eval="True" />
+            <field name="taxes_parent" eval="True" />
+        </record>
+        <record model="product.category" id="cat_radio_ofi">
+            <field name="name">Costo Oficial</field>
+            <field name="parent" ref="cat_radio" />
+            <field name="account_parent" eval="True" />
+            <field name="taxes_parent" eval="True" />
+        </record>
+
+        <!-- CATEGORIAS de PRODUCTOS de DIGITAL -->        
+        <record model="product.category" id="cat_digital_prov">
+            <field name="name">Costo Provincial</field>
+            <field name="parent" ref="cat_digital" />
+            <field name="account_parent" eval="True" />
+            <field name="taxes_parent" eval="True" />
+        </record>
+        <record model="product.category" id="cat_digital_nac">
+            <field name="name">Costo Nacional</field>
+            <field name="parent" ref="cat_digital" />
+            <field name="account_parent" eval="True" />
+            <field name="taxes_parent" eval="True" />
+        </record>
+        <record model="product.category" id="cat_digital_ofi">
+            <field name="name">Costo Oficial</field>
+            <field name="parent" ref="cat_digital" />
+            <field name="account_parent" eval="True" />
+            <field name="taxes_parent" eval="True" />
+        </record>
+        
+	<!-- PRODUCTOS de DIARIO -->
+	<record model="product.template" id="t_diario_impreso">
+            <field name="name">Diario Impreso</field>
+            <field name="category" ref="cat_diario" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('4')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="diario_impreso">
+            <field name="template" ref="t_diario_impreso" />
+        </record>           
+        <!-- PRODUCTOS de DIARIO / AVISO COMUN -->
+	<record model="product.template" id="t_aviso_local_bn">
+            <field name="name">Aviso Local B/N</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="sale_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('13')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_local_bn">
+            <field name="template" ref="t_aviso_local_bn" />
+        </record>        
+        <record model="product.template" id="t_aviso_local_bn_solicitada">
+            <field name="name">Aviso Local B/N Solicitada</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('26')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/> 
+            <field name="sale_uom" ref="product.uom_centimeter" />       
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_local_bn_solicitada">
+            <field name="template" ref="t_aviso_local_bn_solicitada" />
+        </record>        
+        <record model="product.template" id="t_aviso_local_color">
+            <field name="name">Aviso Local Color</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('19')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>     
+            <field name="taxes_category" eval="True"/>
+            <field name="sale_uom" ref="product.uom_centimeter" />  
+        </record>
+        <record model="product.product" id="aviso_local_color">
+            <field name="template" ref="t_aviso_local_color" />
+        </record>
+        <record model="product.template" id="t_aviso_local_color_solicitada">
+            <field name="name">Aviso Local Color Solicitada</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('38')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>    
+            <field name="taxes_category" eval="True"/>
+            <field name="sale_uom" ref="product.uom_centimeter" />  
+        </record>
+        <record model="product.product" id="aviso_local_color_solicitada">
+            <field name="template" ref="t_aviso_local_color_solicitada" />
+        </record>	
+	<!-- ****************************************************** -->
+	<record model="product.template" id="t_aviso_regional_bn">
+            <field name="name">Aviso Regional B/N</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="sale_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('16')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_regional_bn">
+            <field name="template" ref="t_aviso_regional_bn" />
+        </record>        
+        <record model="product.template" id="t_aviso_regional_bn_solicitada">
+            <field name="name">Aviso Regional B/N Solicitada</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('32')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/> 
+            <field name="sale_uom" ref="product.uom_centimeter" />       
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_regional_bn_solicitada">
+            <field name="template" ref="t_aviso_regional_bn_solicitada" />
+        </record>        
+        <record model="product.template" id="t_aviso_regional_color">
+            <field name="name">Aviso Regional Color</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('20')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>     
+            <field name="taxes_category" eval="True"/>
+            <field name="sale_uom" ref="product.uom_centimeter" />  
+        </record>
+        <record model="product.product" id="aviso_regional_color">
+            <field name="template" ref="t_aviso_regional_color" />
+        </record>
+        <record model="product.template" id="t_aviso_regional_color_solicitada">
+            <field name="name">Aviso Regional Color Solicitada</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('40')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>    
+            <field name="taxes_category" eval="True"/>
+            <field name="sale_uom" ref="product.uom_centimeter" />  
+        </record>
+        <record model="product.product" id="aviso_regional_color_solicitada">
+            <field name="template" ref="t_aviso_regional_color_solicitada" />
+        </record>
+	<!-- ****************************************************** -->
+	<record model="product.template" id="t_aviso_nacional_bn">
+            <field name="name">Aviso Nacional B/N</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="sale_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('46')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_nacional_bn">
+            <field name="template" ref="t_aviso_nacional_bn" />
+        </record>        
+        <record model="product.template" id="t_aviso_nacional_bn_solicitada">
+            <field name="name">Aviso Nacional B/N Solicitada</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('92')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/> 
+            <field name="sale_uom" ref="product.uom_centimeter" />       
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_nacional_bn_solicitada">
+            <field name="template" ref="t_aviso_nacional_bn_solicitada" />
+        </record>        
+        <record model="product.template" id="t_aviso_nacional_color">
+            <field name="name">Aviso Nacional Color</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('55.20')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>     
+            <field name="taxes_category" eval="True"/>
+            <field name="sale_uom" ref="product.uom_centimeter" />  
+        </record>
+        <record model="product.product" id="aviso_nacional_color">
+            <field name="template" ref="t_aviso_nacional_color" />
+        </record>
+        <record model="product.template" id="t_aviso_nacional_color_solicitada">
+            <field name="name">Aviso Nacional Color Solicitada</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('110.40')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>    
+            <field name="taxes_category" eval="True"/>
+            <field name="sale_uom" ref="product.uom_centimeter" />  
+        </record>
+        <record model="product.product" id="aviso_nacional_color_solicitada">
+            <field name="template" ref="t_aviso_nacional_color_solicitada" />
+        </record>
+	<!-- ****************************************************** -->
+	<record model="product.template" id="t_aviso_oficial_bn">
+            <field name="name">Aviso Oficial B/N</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="sale_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('80')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_oficial_bn">
+            <field name="template" ref="t_aviso_oficial_bn" />
+        </record>        
+        <record model="product.template" id="t_aviso_oficial_bn_solicitada">
+            <field name="name">Aviso Oficial B/N Solicitada</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('160')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/> 
+            <field name="sale_uom" ref="product.uom_centimeter" />       
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_oficial_bn_solicitada">
+            <field name="template" ref="t_aviso_oficial_bn_solicitada" />
+        </record>        
+        <record model="product.template" id="t_aviso_oficial_color">
+            <field name="name">Aviso Oficial Color</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('80')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>     
+            <field name="taxes_category" eval="True"/>
+            <field name="sale_uom" ref="product.uom_centimeter" />  
+        </record>
+        <record model="product.product" id="aviso_oficial_color">
+            <field name="template" ref="t_aviso_oficial_color" />
+        </record>
+        <record model="product.template" id="t_aviso_oficial_color_solicitada">
+            <field name="name">Aviso Oficial Color Solicitada</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('160')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>    
+            <field name="taxes_category" eval="True"/>
+            <field name="sale_uom" ref="product.uom_centimeter" />  
+        </record>
+        <record model="product.product" id="aviso_oficial_color_solicitada">
+            <field name="template" ref="t_aviso_oficial_color_solicitada" />
+        </record>
+	<!-- ****************************************************** -->
+	<record model="product.template" id="t_aviso_telam_bn">
+            <field name="name">Aviso Telam B/N</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="sale_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('72')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_telam_bn">
+            <field name="template" ref="t_aviso_telam_bn" />
+        </record>        
+        <record model="product.template" id="t_aviso_telam_bn_solicitada">
+            <field name="name">Aviso Telam B/N Solicitada</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('144')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/> 
+            <field name="sale_uom" ref="product.uom_centimeter" />       
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_telam_bn_solicitada">
+            <field name="template" ref="t_aviso_telam_bn_solicitada" />
+        </record>        
+        <record model="product.template" id="t_aviso_telam_color">
+            <field name="name">Aviso Telam Color</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('94.12')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>     
+            <field name="taxes_category" eval="True"/>
+            <field name="sale_uom" ref="product.uom_centimeter" />  
+        </record>
+        <record model="product.product" id="aviso_telam_color">
+            <field name="template" ref="t_aviso_telam_color" />
+        </record>
+        <record model="product.template" id="t_aviso_telam_color_solicitada">
+            <field name="name">Aviso Telam Color Solicitada</field>
+            <field name="category" ref="cat_aviso_comun" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('188.24')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>    
+            <field name="taxes_category" eval="True"/>
+            <field name="sale_uom" ref="product.uom_centimeter" />  
+        </record>
+        <record model="product.product" id="aviso_telam_color_solicitada">
+            <field name="template" ref="t_aviso_telam_color_solicitada" />
+        </record>
+        <!-- PRODUCTOS de DIARIO / AVISO ESPECIAL -->
+	<record model="product.template" id="t_aviso_social_bn_2x6">
+            <field name="name">Aviso Social B/N 2x6</field>
+            <field name="category" ref="cat_aviso_especial" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('110')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_social_bn_2x6">
+            <field name="template" ref="t_aviso_social_bn_2x6" />
+        </record>       
+	<record model="product.template" id="t_aviso_social_color_2x6">
+            <field name="name">Aviso Social Color 2x6</field>
+            <field name="category" ref="cat_aviso_especial" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('160')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_social_color_2x6">
+            <field name="template" ref="t_aviso_social_color_2x6" />
+        </record>  
+	<record model="product.template" id="t_aviso_social_bn_3x6">
+            <field name="name">Aviso Social B/N 3x6</field>
+            <field name="category" ref="cat_aviso_especial" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('140')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_social_bn_3x6">
+            <field name="template" ref="t_aviso_social_bn_3x6" />
+        </record>       
+	<record model="product.template" id="t_aviso_social_color_3x6">
+            <field name="name">Aviso Social Color 3x6</field>
+            <field name="category" ref="cat_aviso_especial" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('190')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_social_color_3x6">
+            <field name="template" ref="t_aviso_social_color_3x6" />
+        </record>      
+	<record model="product.template" id="t_aviso_religioso_1x5">
+            <field name="name">Aviso Religioso 1x5</field>
+            <field name="category" ref="cat_aviso_especial" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('40')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_religioso_1x5">
+            <field name="template" ref="t_aviso_religioso_1x5" />
+        </record>     
+	<record model="product.template" id="t_aviso_religioso_1x10">
+            <field name="name">Aviso Religioso 1x10</field>
+            <field name="category" ref="cat_aviso_especial" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('60')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_religioso_1x10">
+            <field name="template" ref="t_aviso_religioso_1x10" />
+        </record>
+	<record model="product.template" id="t_aviso_religioso_2x10">
+            <field name="name">Aviso Religioso 2x10</field>
+            <field name="category" ref="cat_aviso_especial" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('80')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_religioso_2x10">
+            <field name="template" ref="t_aviso_religioso_2x10" />
+        </record> 
+	<!-- PRODUCTOS de DIARIO / AVISO FUNEBRE -->
+	<record model="product.template" id="t_aviso_funebre_comun">
+            <field name="name">Comun</field>
+            <field name="category" ref="cat_aviso_funebre" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('35')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_funebre_comun">
+            <field name="template" ref="t_aviso_funebre_comun" />
+        </record>              
+	<record model="product.template" id="t_aviso_funebre_comun_oracion">
+            <field name="name">Comun Con Oracion</field>
+            <field name="category" ref="cat_aviso_funebre" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('40')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_funebre_comun_oracion">
+            <field name="template" ref="t_aviso_funebre_comun_oracion" />
+        </record>      
+	<record model="product.template" id="t_aviso_funebre_recuadro">
+            <field name="name">Recuadro</field>
+            <field name="category" ref="cat_aviso_funebre" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('55')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_funebre_recuadro">
+            <field name="template" ref="t_aviso_funebre_recuadro" />
+        </record>              
+	<record model="product.template" id="t_aviso_funebre_recuadro_oracion">
+            <field name="name">Recuadro Con Oracion</field>
+            <field name="category" ref="cat_aviso_funebre" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('65')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_funebre_recuadro_oracion">
+            <field name="template" ref="t_aviso_funebre_recuadro_oracion" />
+        </record>         
+	<record model="product.template" id="t_aviso_funebre_recuadro_oracion_foto">
+            <field name="name">Recuadro Con Oracion Y Foto</field>
+            <field name="category" ref="cat_aviso_funebre" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('90')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_funebre_recuadro_oracion_foto">
+            <field name="template" ref="t_aviso_funebre_recuadro_oracion_foto" />
+        </record>  
+	<record model="product.template" id="t_aviso_funebre_destacado">
+            <field name="name">Destacado</field>
+            <field name="category" ref="cat_aviso_funebre" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="sale_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('10')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="aviso_funebre_destacado">
+            <field name="template" ref="t_aviso_funebre_destacado" />
+        </record>    
+	<!-- PRODUCTOS de DIARIO / EDICTO -->
+	<record model="product.template" id="t_edicto_judicial">
+            <field name="name">Linea de Edicto Judicial</field>
+            <field name="category" ref="cat_edicto" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('3')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="edicto_judicial">
+            <field name="template" ref="t_edicto_judicial" />
+        </record>   
+	<!-- PRODUCTOS de DIARIO / INSERT  -->
+	<record model="product.template" id="t_insert_">
+            <field name="name">Insert</field>
+            <field name="category" ref="cat_insert" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('1')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="insert_">
+            <field name="template" ref="t_insert_" />
+        </record>         
+	<!-- PRODUCTOS de DIARIO / SUPLEMENTO  -->
+	<record model="product.template" id="t_modulo_completo">
+            <field name="name">Suplemento</field>
+            <field name="category" ref="cat_suplemento" />
+            <field name="default_uom" ref="uom_pagina" />
+            <field name="sale_uom" ref="uom_pagina" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('1')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="modulo_completo">
+            <field name="template" ref="t_modulo_completo" />
+        </record>        
+	<!-- PRODUCTOS de DIARIO / CENTIMETRO  -->
+	<record model="product.template" id="t_cm_">
+            <field name="name">Centimetros</field>
+            <field name="category" ref="cat_cm" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="sale_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('0')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="cm_">
+            <field name="template" ref="t_cm_" />
+        </record>                
+	<!-- PRODUCTOS de DIARIO / EXTRA  -->
+	<record model="product.template" id="t_recargo">
+            <field name="name">Recargo</field>
+            <field name="category" ref="cat_extra" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('0')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="recargo">
+            <field name="template" ref="t_recargo" />
+        </record>                          
+	<record model="product.template" id="t_bonif">
+            <field name="name">Bonificacion</field>
+            <field name="category" ref="cat_extra" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('0')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="bonif">
+            <field name="template" ref="t_bonif" />
+        </record>  
+             
+	<!-- PRODUCTOS de DIARIO / CLASIFICADO  -->
+	<record model="product.template" id="t_venta_permutacion">
+            <field name="name">Venta/Permutacion x Linea</field>
+            <field name="category" ref="cat_aviso_clasificado" />
+            <field name="default_uom" ref="uom_linea" />
+            <field name="sale_uom" ref="uom_linea" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('6')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="venta_permutacion">
+            <field name="template" ref="t_venta_permutacion" />
+        </record> 
+	<record model="product.template" id="t_compra">
+            <field name="name">Compra x Linea</field>
+            <field name="category" ref="cat_aviso_clasificado" />
+            <field name="default_uom" ref="uom_linea" />
+            <field name="sale_uom" ref="uom_linea" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('6')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="compra">
+            <field name="template" ref="t_compra" />
+        </record> 
+	<record model="product.template" id="t_venta_automotor">
+            <field name="name">Venta Automotor x Linea</field>
+            <field name="category" ref="cat_aviso_clasificado" />
+            <field name="default_uom" ref="uom_linea" />
+            <field name="sale_uom" ref="uom_linea" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('6')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="venta_automotor">
+            <field name="template" ref="t_venta_automotor" />
+        </record> 
+	<record model="product.template" id="t_compra_automotor">
+            <field name="name">Compra Automotor x Linea</field>
+            <field name="category" ref="cat_aviso_clasificado" />
+            <field name="default_uom" ref="uom_linea" />
+            <field name="sale_uom" ref="uom_linea" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('6')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="compra_automotor">
+            <field name="template" ref="t_compra_automotor" />
+        </record> 
+	<record model="product.template" id="t_servicios_ofrecidos">
+            <field name="name">Servicios Ofrecidos x Linea</field>
+            <field name="category" ref="cat_aviso_clasificado" />
+            <field name="default_uom" ref="uom_linea" />
+            <field name="sale_uom" ref="uom_linea" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('6')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="servicios_ofrecidos">
+            <field name="template" ref="t_servicios_ofrecidos" />
+        </record> 
+	<record model="product.template" id="t_servicios_pedidos">
+            <field name="name">Servicios Pedidos x Linea</field>
+            <field name="category" ref="cat_aviso_clasificado" />
+            <field name="default_uom" ref="uom_linea" />
+            <field name="sale_uom" ref="uom_linea" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('6')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="servicios_pedidos">
+            <field name="template" ref="t_servicios_pedidos" />
+        </record>
+	<record model="product.template" id="t_alquiler">
+            <field name="name">Alquileres x Linea</field>
+            <field name="category" ref="cat_aviso_clasificado" />
+            <field name="default_uom" ref="uom_linea" />
+            <field name="sale_uom" ref="uom_linea" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('6')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="alquiler">
+            <field name="template" ref="t_alquiler" />
+        </record>
+	<!-- ***************************************  -->
+	<record model="product.template" id="t_venta_permutacion_destacado">
+            <field name="name">Venta/Permutacion Destacado</field>
+            <field name="category" ref="cat_aviso_clasificado" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="sale_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('7')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="venta_permutacion_destacado">
+            <field name="template" ref="t_venta_permutacion_destacado" />
+        </record> 
+	<record model="product.template" id="t_compra_destacado">
+            <field name="name">Compra Destacado</field>
+            <field name="category" ref="cat_aviso_clasificado" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="sale_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('7')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="compra_destacado">
+            <field name="template" ref="t_compra_destacado" />
+        </record> 
+	<record model="product.template" id="t_venta_automotor_destacado">
+            <field name="name">Venta Automotor Destacado</field>
+            <field name="category" ref="cat_aviso_clasificado" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="sale_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('7')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="venta_automotor_destacado">
+            <field name="template" ref="t_venta_automotor_destacado" />
+        </record> 
+	<record model="product.template" id="t_compra_automotor_destacado">
+            <field name="name">Compra Automotor Destacado</field>
+            <field name="category" ref="cat_aviso_clasificado" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="sale_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('7')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="compra_automotor_destacado">
+            <field name="template" ref="t_compra_automotor_destacado" />
+        </record> 
+	<record model="product.template" id="t_servicios_ofrecidos_destacado">
+            <field name="name">Servicios Ofrecidos Destacado</field>
+            <field name="category" ref="cat_aviso_clasificado" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="sale_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('7')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="servicios_ofrecidos_destacado">
+            <field name="template" ref="t_servicios_ofrecidos_destacado" />
+        </record> 
+	<record model="product.template" id="t_servicios_pedidos_destacado">
+            <field name="name">Servicios Pedidos Destacado</field>
+            <field name="category" ref="cat_aviso_clasificado" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="sale_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('7')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="servicios_pedidos_destacado">
+            <field name="template" ref="t_servicios_pedidos_destacado" />
+        </record>
+	<record model="product.template" id="t_alquiler_destacado">
+            <field name="name">Alquileres Destacado</field>
+            <field name="category" ref="cat_aviso_clasificado" />
+            <field name="default_uom" ref="product.uom_centimeter" />
+            <field name="sale_uom" ref="product.uom_centimeter" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('7')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="alquiler_destacado">
+            <field name="template" ref="t_alquiler_destacado" />
+        </record>
+	<!-- RADIO -->
+	<!-- COSTO PROVINCIAL -->
+	<record model="product.template" id="t_prov_tanda_10">
+            <field name="name">Tanda Comercial x 10</field>
+            <field name="category" ref="cat_radio_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('900')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="prov_tanda_10">
+            <field name="template" ref="t_prov_tanda_10" />
+        </record>     
+	<record model="product.template" id="t_prov_tanda_15">
+            <field name="name">Tanda Comercial x 15</field>
+            <field name="category" ref="cat_radio_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('1200')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="prov_tanda_15">
+            <field name="template" ref="t_prov_tanda_15" />
+        </record>     
+	<record model="product.template" id="t_prov_noticias_4">
+            <field name="name">Radio Noticias x 4</field>
+            <field name="category" ref="cat_radio_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('300')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="prov_noticias_4">
+            <field name="template" ref="t_prov_noticias_4" />
+        </record>  
+	<record model="product.template" id="t_prov_show_8">
+            <field name="name">El Show de la Radio x 8</field>
+            <field name="category" ref="cat_radio_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('800')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="prov_show_8">
+            <field name="template" ref="t_prov_show_8" />
+        </record>          
+	<record model="product.template" id="t_prov_panorama_2">
+            <field name="name">Panorama Informativo x 2</field>
+            <field name="category" ref="cat_radio_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('150')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="prov_panorama_2">
+            <field name="template" ref="t_prov_panorama_2" />
+        </record>         
+	<record model="product.template" id="t_prov_coplera_5">
+            <field name="name">La Coplera x 5</field>
+            <field name="category" ref="cat_radio_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('450')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="prov_coplera_5">
+            <field name="template" ref="t_prov_coplera_5" />
+        </record>              
+	<record model="product.template" id="t_prov_homero_6">
+            <field name="name">Homero de la Tarde x 6</field>
+            <field name="category" ref="cat_radio_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('600')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="prov_homero_6">
+            <field name="template" ref="t_prov_homero_6" />
+        </record>        
+	<record model="product.template" id="t_prov_vuelta_6">
+            <field name="name">La Vuelta x 6</field>
+            <field name="category" ref="cat_radio_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('600')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="prov_vuelta_6">
+            <field name="template" ref="t_prov_vuelta_6" />
+        </record>            
+	<record model="product.template" id="t_prov_hora_15">
+            <field name="name">Hora Oficial x 15</field>
+            <field name="category" ref="cat_radio_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('3000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="prov_hora_15">
+            <field name="template" ref="t_prov_hora_15" />
+        </record>           
+	<record model="product.template" id="t_prov_serv_inf_30">
+            <field name="name">Servicio Informativo x 30</field>
+            <field name="category" ref="cat_radio_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('4500')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="prov_serv_inf_30">
+            <field name="template" ref="t_prov_serv_inf_30" />
+        </record>  
+	<record model="product.template" id="t_prov_funebre_2">
+            <field name="name">Funebre x 2</field>
+            <field name="category" ref="cat_radio_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('1500')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="prov_funebre_2">
+            <field name="template" ref="t_prov_funebre_2" />
+        </record>   
+	<record model="product.template" id="t_prov_columnista">
+            <field name="name">Columnista</field>
+            <field name="category" ref="cat_radio_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('0')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="prov_columnista">
+            <field name="template" ref="t_prov_columnista" />
+        </record>                                           
+        
+	<!-- COSTO NACIONAL -->
+	<record model="product.template" id="t_nac_tanda_10">
+            <field name="name">Tanda Comercial x 10</field>
+            <field name="category" ref="cat_radio_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('1800')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="nac_tanda_10">
+            <field name="template" ref="t_nac_tanda_10" />
+        </record>     
+	<record model="product.template" id="t_nac_tanda_15">
+            <field name="name">Tanda Comercial x 15</field>
+            <field name="category" ref="cat_radio_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('2400')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="nac_tanda_15">
+            <field name="template" ref="t_nac_tanda_15" />
+        </record>     
+	<record model="product.template" id="t_nac_noticias_4">
+            <field name="name">Radio Noticias x 4</field>
+            <field name="category" ref="cat_radio_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('700')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="nac_noticias_4">
+            <field name="template" ref="t_nac_noticias_4" />
+        </record>  
+	<record model="product.template" id="t_nac_show_8">
+            <field name="name">El Show de la Radio x 8</field>
+            <field name="category" ref="cat_radio_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('1500')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="nac_show_8">
+            <field name="template" ref="t_nac_show_8" />
+        </record>          
+	<record model="product.template" id="t_nac_panorama_2">
+            <field name="name">Panorama Informativo x 2</field>
+            <field name="category" ref="cat_radio_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('500')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="nac_panorama_2">
+            <field name="template" ref="t_nac_panorama_2" />
+        </record>         
+	<record model="product.template" id="t_nac_coplera_5">
+            <field name="name">La Coplera x 5</field>
+            <field name="category" ref="cat_radio_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('1100')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="nac_coplera_5">
+            <field name="template" ref="t_nac_coplera_5" />
+        </record>              
+	<record model="product.template" id="t_nac_homero_6">
+            <field name="name">Homero de la Tarde x 6</field>
+            <field name="category" ref="cat_radio_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('1200')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="nac_homero_6">
+            <field name="template" ref="t_nac_homero_6" />
+        </record>        
+	<record model="product.template" id="t_nac_vuelta_6">
+            <field name="name">La Vuelta x 6</field>
+            <field name="category" ref="cat_radio_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('1200')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="nac_vuelta_6">
+            <field name="template" ref="t_nac_vuelta_6" />
+        </record>            
+	<record model="product.template" id="t_nac_hora_15">
+            <field name="name">Hora Oficial x 15</field>
+            <field name="category" ref="cat_radio_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('4500')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="nac_hora_15">
+            <field name="template" ref="t_nac_hora_15" />
+        </record>           
+	<record model="product.template" id="t_nac_serv_inf_30">
+            <field name="name">Servicio Informativo x 30</field>
+            <field name="category" ref="cat_radio_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('6000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="nac_serv_inf_30">
+            <field name="template" ref="t_nac_serv_inf_30" />
+        </record>  
+	<record model="product.template" id="t_nac_funebre_2">
+            <field name="name">Funebre x 2</field>
+            <field name="category" ref="cat_radio_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('2500')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="nac_funebre_2">
+            <field name="template" ref="t_nac_funebre_2" />
+        </record>   
+	<record model="product.template" id="t_nac_columnista">
+            <field name="name">Columnista</field>
+            <field name="category" ref="cat_radio_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('0')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="nac_columnista">
+            <field name="template" ref="t_nac_columnista" />
+        </record>   
+
+	<!-- COSTO OFICIAL -->
+	<record model="product.template" id="t_ofi_tanda_10">
+            <field name="name">Tanda Comercial x 10</field>
+            <field name="category" ref="cat_radio_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('3000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="ofi_tanda_10">
+            <field name="template" ref="t_ofi_tanda_10" />
+        </record>     
+	<record model="product.template" id="t_ofi_tanda_15">
+            <field name="name">Tanda Comercial x 15</field>
+            <field name="category" ref="cat_radio_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('3500')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="ofi_tanda_15">
+            <field name="template" ref="t_ofi_tanda_15" />
+        </record>     
+	<record model="product.template" id="t_ofi_noticias_4">
+            <field name="name">Radio Noticias x 4</field>
+            <field name="category" ref="cat_radio_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('1500')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="ofi_noticias_4">
+            <field name="template" ref="t_ofi_noticias_4" />
+        </record>  
+	<record model="product.template" id="t_ofi_show_8">
+            <field name="name">El Show de la Radio x 8</field>
+            <field name="category" ref="cat_radio_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('2500')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="ofi_show_8">
+            <field name="template" ref="t_ofi_show_8" />
+        </record>          
+	<record model="product.template" id="t_ofi_panorama_2">
+            <field name="name">Panorama Informativo x 2</field>
+            <field name="category" ref="cat_radio_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('900')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="ofi_panorama_2">
+            <field name="template" ref="t_ofi_panorama_2" />
+        </record>         
+	<record model="product.template" id="t_ofi_coplera_5">
+            <field name="name">La Coplera x 5</field>
+            <field name="category" ref="cat_radio_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('1800')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="ofi_coplera_5">
+            <field name="template" ref="t_ofi_coplera_5" />
+        </record>              
+	<record model="product.template" id="t_ofi_homero_6">
+            <field name="name">Homero de la Tarde x 6</field>
+            <field name="category" ref="cat_radio_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('2000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="ofi_homero_6">
+            <field name="template" ref="t_ofi_homero_6" />
+        </record>        
+	<record model="product.template" id="t_ofi_vuelta_6">
+            <field name="name">La Vuelta x 6</field>
+            <field name="category" ref="cat_radio_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('2000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="ofi_vuelta_6">
+            <field name="template" ref="t_ofi_vuelta_6" />
+        </record>            
+	<record model="product.template" id="t_ofi_hora_15">
+            <field name="name">Hora Oficial x 15</field>
+            <field name="category" ref="cat_radio_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('6000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="ofi_hora_15">
+            <field name="template" ref="t_ofi_hora_15" />
+        </record>           
+	<record model="product.template" id="t_ofi_serv_inf_30">
+            <field name="name">Servicio Informativo x 30</field>
+            <field name="category" ref="cat_radio_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('7500')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="ofi_serv_inf_30">
+            <field name="template" ref="t_ofi_serv_inf_30" />
+        </record>  
+	<record model="product.template" id="t_ofi_funebre_2">
+            <field name="name">Funebre x 2</field>
+            <field name="category" ref="cat_radio_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('3500')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="ofi_funebre_2">
+            <field name="template" ref="t_ofi_funebre_2" />
+        </record>   
+	<record model="product.template" id="t_ofi_columnista">
+            <field name="name">Columnista</field>
+            <field name="category" ref="cat_radio_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('0')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="ofi_columnista">
+            <field name="template" ref="t_ofi_columnista" />
+        </record> 
+	<!-- DIGITAL -->
+	<!-- COSTO PROVINCIAL -->  
+	<record model="product.template" id="t_d_prov_banner_1">
+            <field name="name">Banner 950x50 (1)</field>
+            <field name="category" ref="cat_digital_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('3000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_prov_banner_1">
+            <field name="template" ref="t_d_prov_banner_1"/>
+        </record> 
+	<record model="product.template" id="t_d_prov_banner_2">
+            <field name="name">Banner 660x90 (2)</field>
+            <field name="category" ref="cat_digital_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('4000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_prov_banner_2">
+            <field name="template" ref="t_d_prov_banner_2"/>
+        </record> 
+	<record model="product.template" id="t_d_prov_banner_3">
+            <field name="name">Banner 300x90 (3)</field>
+            <field name="category" ref="cat_digital_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('2500')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_prov_banner_3">
+            <field name="template" ref="t_d_prov_banner_3"/>
+        </record> 
+	<record model="product.template" id="t_d_prov_banner_4">
+            <field name="name">Banner 660x90 (4)</field>
+            <field name="category" ref="cat_digital_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('4000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_prov_banner_4">
+            <field name="template" ref="t_d_prov_banner_4"/>
+        </record> 
+	<record model="product.template" id="t_d_prov_banner_5">
+            <field name="name">Banner 300x90 (5)</field>
+            <field name="category" ref="cat_digital_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('2000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_prov_banner_5">
+            <field name="template" ref="t_d_prov_banner_5"/>
+        </record> 
+	<record model="product.template" id="t_d_prov_banner_6">
+            <field name="name">Banner 300x90 (6)</field>
+            <field name="category" ref="cat_digital_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('1500')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_prov_banner_6">
+            <field name="template" ref="t_d_prov_banner_6"/>
+        </record> 
+	<record model="product.template" id="t_d_prov_banner_7">
+            <field name="name">Banner 140x674 (7)</field>
+            <field name="category" ref="cat_digital_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('5000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_prov_banner_7">
+            <field name="template" ref="t_d_prov_banner_7"/>
+        </record> 
+	<record model="product.template" id="t_d_prov_banner_8">
+            <field name="name">Banner 300x90 (8)</field>
+            <field name="category" ref="cat_digital_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('1000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_prov_banner_8">
+            <field name="template" ref="t_d_prov_banner_8"/>
+        </record> 
+	<record model="product.template" id="t_d_prov_banner_9">
+            <field name="name">Banner 300x90 (9)</field>
+            <field name="category" ref="cat_digital_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('400')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_prov_banner_9">
+            <field name="template" ref="t_d_prov_banner_9"/>
+        </record> 
+	<record model="product.template" id="t_d_prov_banner_10">
+            <field name="name">Banner 300x50 (10)</field>
+            <field name="category" ref="cat_digital_prov" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('200')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_prov_banner_10">
+            <field name="template" ref="t_d_prov_banner_10"/>
+        </record> 
+	<!-- COSTO NACIONAL -->  
+	<record model="product.template" id="t_d_nac_banner_1">
+            <field name="name">Banner 950x50 (1)</field>
+            <field name="category" ref="cat_digital_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('6000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_nac_banner_1">
+            <field name="template" ref="t_d_nac_banner_1"/>
+        </record> 
+	<record model="product.template" id="t_d_nac_banner_2">
+            <field name="name">Banner 660x90 (2)</field>
+            <field name="category" ref="cat_digital_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('8000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_nac_banner_2">
+            <field name="template" ref="t_d_nac_banner_2"/>
+        </record> 
+	<record model="product.template" id="t_d_nac_banner_3">
+            <field name="name">Banner 300x90 (3)</field>
+            <field name="category" ref="cat_digital_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('5000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_nac_banner_3">
+            <field name="template" ref="t_d_nac_banner_3"/>
+        </record> 
+	<record model="product.template" id="t_d_nac_banner_4">
+            <field name="name">Banner 660x90 (4)</field>
+            <field name="category" ref="cat_digital_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('8000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_nac_banner_4">
+            <field name="template" ref="t_d_nac_banner_4"/>
+        </record> 
+	<record model="product.template" id="t_d_nac_banner_5">
+            <field name="name">Banner 300x90 (5)</field>
+            <field name="category" ref="cat_digital_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('4000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_nac_banner_5">
+            <field name="template" ref="t_d_nac_banner_5"/>
+        </record> 
+	<record model="product.template" id="t_d_nac_banner_6">
+            <field name="name">Banner 300x90 (6)</field>
+            <field name="category" ref="cat_digital_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('3000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_nac_banner_6">
+            <field name="template" ref="t_d_nac_banner_6"/>
+        </record> 
+	<record model="product.template" id="t_d_nac_banner_7">
+            <field name="name">Banner 140x674 (7)</field>
+            <field name="category" ref="cat_digital_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('10000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_nac_banner_7">
+            <field name="template" ref="t_d_nac_banner_7"/>
+        </record> 
+	<record model="product.template" id="t_d_nac_banner_8">
+            <field name="name">Banner 300x90 (8)</field>
+            <field name="category" ref="cat_digital_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('2000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_nac_banner_8">
+            <field name="template" ref="t_d_nac_banner_8"/>
+        </record> 
+	<record model="product.template" id="t_d_nac_banner_9">
+            <field name="name">Banner 300x90 (9)</field>
+            <field name="category" ref="cat_digital_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('800')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_nac_banner_9">
+            <field name="template" ref="t_d_nac_banner_9"/>
+        </record> 
+	<record model="product.template" id="t_d_nac_banner_10">
+            <field name="name">Banner 300x50 (10)</field>
+            <field name="category" ref="cat_digital_nac" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('400')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_nac_banner_10">
+            <field name="template" ref="t_d_nac_banner_10"/>
+        </record>  
+	<!-- COSTO OFICIAL* -->  
+	<record model="product.template" id="t_d_ofi_banner_1">
+            <field name="name">Banner 950x50 (1)</field>
+            <field name="category" ref="cat_digital_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('9000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_ofi_banner_1">
+            <field name="template" ref="t_d_ofi_banner_1"/>
+        </record> 
+	<record model="product.template" id="t_d_ofi_banner_2">
+            <field name="name">Banner 660x90 (2)</field>
+            <field name="category" ref="cat_digital_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('12000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_ofi_banner_2">
+            <field name="template" ref="t_d_ofi_banner_2"/>
+        </record> 
+	<record model="product.template" id="t_d_ofi_banner_3">
+            <field name="name">Banner 300x90 (3)</field>
+            <field name="category" ref="cat_digital_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('7500')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_ofi_banner_3">
+            <field name="template" ref="t_d_ofi_banner_3"/>
+        </record> 
+	<record model="product.template" id="t_d_ofi_banner_4">
+            <field name="name">Banner 660x90 (4)</field>
+            <field name="category" ref="cat_digital_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('12000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_ofi_banner_4">
+            <field name="template" ref="t_d_ofi_banner_4"/>
+        </record> 
+	<record model="product.template" id="t_d_ofi_banner_5">
+            <field name="name">Banner 300x90 (5)</field>
+            <field name="category" ref="cat_digital_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('6000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_ofi_banner_5">
+            <field name="template" ref="t_d_ofi_banner_5"/>
+        </record> 
+	<record model="product.template" id="t_d_ofi_banner_6">
+            <field name="name">Banner 300x90 (6)</field>
+            <field name="category" ref="cat_digital_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('4500')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_ofi_banner_6">
+            <field name="template" ref="t_d_ofi_banner_6"/>
+        </record> 
+	<record model="product.template" id="t_d_ofi_banner_7">
+            <field name="name">Banner 140x674 (7)</field>
+            <field name="category" ref="cat_digital_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('15000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_ofi_banner_7">
+            <field name="template" ref="t_d_ofi_banner_7"/>
+        </record> 
+	<record model="product.template" id="t_d_ofi_banner_8">
+            <field name="name">Banner 300x90 (8)</field>
+            <field name="category" ref="cat_digital_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('3000')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_ofi_banner_8">
+            <field name="template" ref="t_d_ofi_banner_8"/>
+        </record> 
+	<record model="product.template" id="t_d_ofi_banner_9">
+            <field name="name">Banner 300x90 (9)</field>
+            <field name="category" ref="cat_digital_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('1200')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_ofi_banner_9">
+            <field name="template" ref="t_d_ofi_banner_9"/>
+        </record> 
+	<record model="product.template" id="t_d_ofi_banner_10">
+            <field name="name">Banner 300x50 (10)</field>
+            <field name="category" ref="cat_digital_ofi" />
+            <field name="default_uom" ref="product.uom_unit" />
+            <field name="sale_uom" ref="product.uom_unit" />
+            <field name="type" eval="'service'" />
+            <field name="purchasable" eval="False" />
+            <field name="salable" eval="True" />
+            <field name="list_price" eval="Decimal('600')"/>
+            <field name="cost_price" eval="Decimal('0')"/>
+            <field name="cost_price_method" eval="'fixed'"/>
+            <field name="account_category" eval="True"/>
+            <field name="taxes_category" eval="True"/>
+        </record>
+        <record model="product.product" id="d_ofi_banner_10">
+            <field name="template" ref="t_d_ofi_banner_10"/>
+        </record> 
+    </data>
+</tryton>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<data>
+		<!--con expresiones  xpath  nos metemos en el lugarcito donde queremos agregar el camṕo asique agregamos un formulario con solo-->
+    <xpath 
+        expr="/form/field[@name='type']"
+        position="after">
+        <label name="es_a"/>
+        <field name="es_a"/>
+    </xpath>
+</data>

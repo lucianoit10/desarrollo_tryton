@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<form string="Producto">
+    <label name="cat"/>
+    <field name="cat" xexpand="0"/>
+    <label name="producto"/>
+    <field name="producto" widget="selection"/>
+</form>
